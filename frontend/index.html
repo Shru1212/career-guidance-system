@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CareerPath – Career Guidance System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>CareerPath</h1>
+    <p>Your Intelligent Career Guidance System</p>
+  </header>
+
+  <main class="container">
+    <section class="form-card">
+      <h2>Find Your Ideal Career</h2>
+
+      <label>Education Level</label>
+      <select id="education">
+        <option value="">Select</option>
+        <option>PUC / 12th</option>
+        <option>Undergraduate</option>
+        <option>Postgraduate</option>
+      </select>
+
+      <label>Interest Area</label>
+      <select id="interest">
+        <option value="">Select</option>
+        <option>Technology</option>
+        <option>Management</option>
+        <option>Creative</option>
+        <option>Government</option>
+      </select>
+
+      <label>Key Skill</label>
+      <select id="skill">
+        <option value="">Select</option>
+        <option>Programming</option>
+        <option>Data Analysis</option>
+        <option>Design</option>
+        <option>Communication</option>
+      </select>
+
+      <button onclick="getCareer()">Get Career Guidance</button>
+    </section>
+
+    <section class="result" id="result"></section>
+  </main>
+
+  <footer>
+    <p>© 2025 CareerPath | Built for Internship Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
