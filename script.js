@@ -1,52 +1,38 @@
-// ================= CAREER GUIDANCE FRONTEND =================
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("careerBtn");
 
-// Backend API URL (local for now; change after Railway deploy)
-const API_URL = "http://localhost:3000/guide";
+  button.addEventListener("click", async () => {
+    const education = document.getElementById("education").value;
+    const interest = document.getElementById("interest").value;
+    const skill = document.getElementById("skill").value;
 
-// Main function called on button click
-async function getCareer() {
-  const education = document.getElementById("education").value;
-  const interest = document.getElementById("interest").value;
-  const skill = document.getElementById("skill").value;
+    try {
+      const response = await fetch("http://localhost:3000/guide", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          education,
+          interest,
+          skill
+        })
+      });
 
-  // Validation
-  if (!education || !interest || !skill) {
-    alert("Please fill all fields");
-    return;
-  }
+      if (!response.ok) {
+        throw new Error("Server error");
+      }
 
-  try {
-    // Call backend API
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        education: education,
-        interest: interest,
-        skill: skill
-      })
-    });
+      const data = await response.json();
 
-    if (!response.ok) {
-      throw new Error("Server error");
+      document.getElementById("result").innerHTML = `
+        <h3>Suggested Career</h3>
+        <p><strong>${data.career}</strong></p>
+        <p>${data.roadmap}</p>
+      `;
+    } catch (err) {
+      alert("Backend not reachable");
+      console.error(err);
     }
-
-    const data = await response.json();
-
-    // Display result
-    document.getElementById("result").innerHTML = `
-      <div class="career-card">
-        <h3>Recommended Career: ${data.career}</h3>
-        <p><strong>Education Level:</strong> ${data.education}</p>
-        <p><strong>Interest Area:</strong> ${data.interest}</p>
-        <p><strong>Key Skill:</strong> ${data.skill}</p>
-        <p><strong>Career Roadmap:</strong> ${data.roadmap}</p>
-      </div>
-    `;
-  } catch (error) {
-    alert("Backend not reachable. Please start the server.");
-    console.error("Career guidance error:", error);
-  }
-}
+  });
+});
