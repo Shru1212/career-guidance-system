@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("careerBtn");
+  const button = document.getElementById("submitBtn");
 
   button.addEventListener("click", async () => {
     const education = document.getElementById("education").value;
@@ -7,17 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const skill = document.getElementById("skill").value;
 
     try {
-      const response = await fetch("https://jubilant-illumination-production-dfca.up.railway.app/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          education,
-          interest,
-          skill
-        })
-      });
+      const response = await fetch(
+        "https://career-guidance-system-eight.vercel.app/api/guide",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            education,
+            interest,
+            skill,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Server error");
@@ -36,3 +39,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
