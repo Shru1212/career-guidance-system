@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const skill = document.getElementById("skill").value;
 
     try {
-      const response = await fetch("http://localhost:3000/guide", {
+      const response = await fetch("https://jubilant-illumination-production-dfca.up.railway.app/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
