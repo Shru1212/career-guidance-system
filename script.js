@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("submitBtn");
+  const button = document.getElementById("careerBtn");
+
+  if (!button) {
+    console.error("Button not found");
+    return;
+  }
 
   button.addEventListener("click", async () => {
     const education = document.getElementById("education").value;
@@ -12,13 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
           },
-          body: JSON.stringify({
-            education,
-            interest,
-            skill,
-          }),
+          body: JSON.stringify({ education, interest, skill })
         }
       );
 
@@ -39,4 +40,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
