@@ -8,41 +8,37 @@
 <body>
 
   <div class="container">
-    <h1>Find Your Ideal Career</h1>
+    <h2>Find Your Ideal Career</h2>
 
     <label>Education Level</label>
     <select id="education">
-      <option value="">Select</option>
+      <option value="10th">10th</option>
       <option value="PUC / 12th">PUC / 12th</option>
-      <option value="Degree">Degree</option>
-      <option value="Postgraduate">Postgraduate</option>
+      <option value="Graduate">Graduate</option>
+      <option value="Post Graduate">Post Graduate</option>
     </select>
 
     <label>Interest Area</label>
     <select id="interest">
-      <option value="">Select</option>
       <option value="Technology">Technology</option>
       <option value="Management">Management</option>
-      <option value="Design">Design</option>
+      <option value="Arts">Arts</option>
     </select>
 
     <label>Key Skill</label>
     <select id="skill">
-      <option value="">Select</option>
       <option value="Programming">Programming</option>
       <option value="Data Analysis">Data Analysis</option>
       <option value="Communication">Communication</option>
+      <option value="Design">Communication</option>
     </select>
 
-    <button id="guideBtn">Get Career Guidance</button>
+    <button id="careerBtn">Get Career Guidance</button>
 
-    <!-- Loader -->
-    <div id="loader" class="loader hidden"></div>
-
-    <!-- Result -->
     <div id="result"></div>
   </div>
 
+  <!-- JS MUST be last -->
   <script src="script.js"></script>
 </body>
 </html>
