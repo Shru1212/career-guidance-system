@@ -1,60 +1,29 @@
-const express = require("express");
-const cors = require("cors");
+export default function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ message: "Method not allowed" });
+  }
 
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-
-// Health check (important)
-app.get("/", (req, res) => {
-  res.send("Career Guidance API running");
-});
-
-// Main API endpoint
-app.post("/guide", (req, res) => {
   const { education, interest, skill } = req.body;
 
   if (!education || !interest || !skill) {
-    return res.status(400).json({
-      message: "Missing input fields"
-    });
+    return res.status(400).json({ message: "Missing inputs" });
   }
 
-  // Simple logic (can be improved later)
+  // Simple demo logic
   let career = "General Career Path";
-  let roadmap = [
-    "Strengthen basics",
-    "Explore domains",
-    "Build relevant skills",
-    "Apply for internships"
-  ];
+  let roadmap = "Improve basics → Gain experience → Apply for jobs";
 
-  if (interest === "Technology" && skill === "Programming") {
-    career = "Software Developer";
-    roadmap = [
-      "Learn DSA",
-      "Master one programming language",
-      "Build projects",
-      "Apply for internships/jobs"
-    ];
-  } else if (interest === "Management") {
+  if (interest === "Management" && skill === "Data Analysis") {
     career = "Business Analyst";
-    roadmap = [
-      "Learn business fundamentals",
-      "Improve communication",
-      "Learn data tools",
-      "Apply for analyst roles"
-    ];
+    roadmap =
+      "Learn Excel & SQL → Learn Power BI/Tableau → Do projects → Apply for analyst roles";
   }
 
-  res.json({
+  res.status(200).json({
     education,
     interest,
     skill,
     career,
-    roadmap
+    roadmap,
   });
-});
-
-module.exports = app;
+}
